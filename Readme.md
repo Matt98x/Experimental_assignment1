@@ -3,6 +3,8 @@
 
 <p align="center">
   <img src="https://github.com/Matt98x/Experimental_assignment1/blob/main/Images/Finite_state_machines.PNG?raw=true "Title"">
+</p>
+<p align="center">
   UML scheme. In order to inspect the details, please click on the image
 </p>
 
