@@ -2,7 +2,7 @@
 
 
 <p align="center">
-  <img src="https://github.com/andreabradpitto/SofAr-project/blob/master/Images/Component_diagram.PNG?raw=true "Title"">
+  <img src="https://github.com/andreabradpitto/SofAr-project/blob/master/Images/Finite_state_machines.PNG?raw=true "Title"">
   UML scheme. In order to inspect the details, please click on the image
 </p>
 
