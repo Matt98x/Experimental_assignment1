@@ -41,10 +41,8 @@ if __name__ == '__main__':
 	# Declaration of the subscriber
 	rospy.Subscriber("/turtle1/pose",Pose,simcallback)
 	# Declaration of the service
-	rospy.wait_for_service('/turtle1/teleport_relative')
 	rospy.wait_for_service('/turtle1/teleport_absolute')
 	rospy.wait_for_service('/clear')
-	teleport = rospy.ServiceProxy('/turtle1/teleport_relative', TeleportRelative)
 	teleportabs = rospy.ServiceProxy('/turtle1/teleport_absolute', TeleportAbsolute)
 	resets=rospy.ServiceProxy('/clear',Empty)
 	rate = rospy.Rate(5) # 10hz
@@ -56,12 +54,10 @@ if __name__ == '__main__':
 		# Command decision
 		dx=random.randint(-1,1)
 		dy=random.randint(-1,1)
-		while not (x+dx<11 and x+dx>0):
-			dx=random.randrange(-1,1,1)
-		
-		while not (y+dy<11 and y+dy>0):
-			dy=random.randrange(-1,1,1)
-		
+		while not (x+dx<11 and x+dx>=1):
+			dx=random.randint(-1,1)
+		while not (y+dy<11 and y+dy>=1):
+			dy=random.randint(-1,1)
 		# Application of the command
 		rospy.loginfo(str(dx)+" "+str(dy))
 		teleportabs(x+dx,y+dy,math.atan2(dy,dx))
