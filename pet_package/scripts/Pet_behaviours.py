@@ -81,6 +81,8 @@ def simcallback(data):
     theta=data.theta
     rospy.set_param('position',{'x':x,'y':y,'theta':theta})
 
+
+
 ##! States definition
 # define state Sleep
 class Sleep(smach.State):
@@ -94,7 +96,7 @@ class Sleep(smach.State):
 		# while not at home
 		xtar=rospy.get_param('home/x')
 		ytar=rospy.get_param('home/y')
-		while  not((xtar-x==0) and (ytar-y==0)):
+		while not((xtar-x==0) and (ytar-y==0)):
 			go_to_target(xtar,ytar)
 			#if sleep state activated
 			state=rospy.get_param('state')
@@ -131,26 +133,35 @@ class Play(smach.State):
     def execute(self, userdata):
 	cmdrcv=rospy.ServiceProxy('/commandsrv',GetStatus)
 	while True:
-		#receive command
-		param=rospy.get_param('in_course')
-		strings=cmdrcv()
-		while param:
-		#if command received
-			for i in range(2):
-				
-				xtar=2
-				ytar=2
+		#if the command is received
+		# Extract the command
+		strings=cmdrcv().status
+		strings=str(strings)
+		# Find if the command is empty
+		if not strings=="":
+			rospy.loginfo(strings)
+		while not strings=="":
+			#if command received
+			rospy.set_param('in_course',1)
+			temp1=strings.split("|")# devide each command
+			strings=""
+			rospy.loginfo(len(temp1))
+			for i in range(len(temp1)):
+				#parse each command in x and y
+				temp2=temp1[i].split(" ")
+				xtar=int(temp2[0])
+				ytar=int(temp2[1])
 				#go to target
-				while not(xtar==x) and not(ytar==y):
+				while not((xtar==x) and (ytar==y)):
 					go_to_target(xtar,ytar)
 					#if sleep state activates
 					state=rospy.get_param('state')
 					if state==3:
 						return 'outcome2'
-				#go home
+				#go owner
 				xtar=rospy.get_param('owner/x')
 				ytar=rospy.get_param('owner/y')
-				while not(xtar==x) and not(ytar==y):
+				while not((xtar==x) and (ytar==y)):
 					go_to_target(xtar,ytar)
 					#if sleep state activates
 					state=rospy.get_param('state')
@@ -173,9 +184,6 @@ class Play(smach.State):
 		state=rospy.get_param('state')
 		if state==1:
 			return 'outcome1'
-		if state==3:
-			return 'outcome2'
-		
 
 ##! @fn main
 # Main function declaration

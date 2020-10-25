@@ -23,45 +23,46 @@ import time
 
 ##! Variable declaration
 command=[] #
-msg_received=0 #if a message is received
+msg_received=1 #if a message is received
 
 ##! @fn srvCallback
 def srvCallback(req):
+	# Service to send the command to Pet_behaviours
 	global command
-	string=""
-	for i in range(len(command)):
-		string.concatenate(str(command(i)))
-		if i<len(command)-1:
-			string.concatenate(" ")
-	return str(command)
+	temp=command
+	command=""	
+	return temp
 
 ##! @fn comCallback
 # @brief The callback that receive the command and convert them to a compliant format
-def comCallback(data):
-	global command,msg_received
-	if msg_received==0:
-		temp1=data.split("and") # if there is an "and"
-		if len(temp1)>len(data):
-			temp=temp1
-		temp2=data.split("or") # if there is an "or"
-		if len(temp2)>len(data):
-			temp=temp2
-		com=[];
-		for i in range(len(temp)):	
-			elem=temp.split(" ")
-			if elem(1)=="play":
-				rospy.set_param("state",2)
-			elif elem(1)=="go":
-				goto=[int(elem(3)),int(elem(4))]
-				com.concatenate(goto)
-			elif elem(1)=="point":
-				poto=[int(elem(3)),int(elem(4))]
-				com.concatenate(poto)
-		command=com
-		msg_received=1
-	state=rospy.get_param("state")
-	if state==2:
-		rospy.set_param('in_course',1)
+def comCallback(msg):
+	global msg_received,command
+	msg_received=rospy.get_param('in_course')
+	state=rospy.get_param('state')
+	# If it is not processing any other message
+	# If a message was received parse it
+	if not msg_received and state==2:
+		temp_string="";
+		# separate all commands with "and" delimeter
+		tlist=str(msg.data).split(" and ")
+		# for every command, parse it
+		for i in range(len(tlist)):
+			# split for every space
+			temp=tlist[i].split(" ")
+			for j in range(len(temp)-2):
+				if temp[j+2]=="home" or temp[j+2]=="owner":
+					rospy.loginfo(str(temp[j+2]))
+					temp_string+=str(rospy.get_param(str(temp[j+2])+str("/")+str("x")))
+					temp_string+=" "
+					temp_string+=str(rospy.get_param(str(temp[j+2])+str("/")+str("y")))
+				else:
+					temp_string+=str(temp[j+2])
+				if j<len(temp)-3:
+					temp_string+=" "
+			if i<len(tlist)-1:
+					temp_string+="|"
+			command=temp_string
+
 
 ##! @fn main
 # Main function declaration
