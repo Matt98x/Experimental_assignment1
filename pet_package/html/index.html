@@ -113,10 +113,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <ul>
 <li>Download the package from the github repository</li>
 <li>Set the package in the src folder of the catkin workspace</li>
-<li>With the shell, get into the folder and run '''sh chmod +x launcher.sh '''</li>
+<li>With the shell, get into the folder and run <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;chmod +x launcher.sh</div></div><!-- fragment --></li>
 <li>Write ./launcher.sh</li>
 <li>You can look at the blue-background screen to look at the location of the robot while on the shell the state transition and the command from the command menager are displayed</li>
-<li></li>
+<li>To write a command: <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;rostopic pub /commander std_msgs/String &quot;data: &#39;&#39;&quot; </div></div><!-- fragment --> where, in place of '', you can put any commands as presented before</li>
 </ul>
 <h2>Working assumptions</h2>
 <p>The working assumptions will be discussed as the following list:</p><ul>

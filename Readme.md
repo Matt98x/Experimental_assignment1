@@ -56,15 +56,15 @@ And finally the simulator node, which was not implemented by the outhors, but is
 * Download the package from the github repository
 * Set the package in the src folder of the catkin workspace
 * With the shell, get into the folder and run 
- '''sh
+ ```sh
 	chmod +x launcher.sh
- '''
+ ```
 * Write ./launcher.sh
 * You can look at the blue-background screen to look at the location of the robot while on the shell the state transition and the command from the command menager are displayed
 * To write a command:
-'''sh
+```sh
 	rostopic pub /commander std_msgs/String "data: ''" 
- '''
+ ```
 where, in place of '', you can put any commands as presented before
 
 
