@@ -50,14 +50,14 @@ int \hyperlink{Pet__behaviours_8py_a168a8f64fdcb791cb4ae88efb5232fc8}{Pet\+\_\+b
 float \hyperlink{Pet__behaviours_8py_a05cba7438bef49d22f2c83249f468514}{Pet\+\_\+behaviours.\+timer} = 0.\+5\hypertarget{Pet__behaviours_8py_a05cba7438bef49d22f2c83249f468514}{}\label{Pet__behaviours_8py_a05cba7438bef49d22f2c83249f468514}
 
 \begin{DoxyCompactList}\small\item\em delay timer \end{DoxyCompactList}\item 
-\hyperlink{Pet__behaviours_8py_a88c2949521b61c538c120dd9c08bf4da}{Pet\+\_\+behaviours.\+colorserv} = rospy.\+Service\+Proxy(\textquotesingle{}/turtle1/set\+\_\+pen\textquotesingle{}, Set\+Pen)
+int \hyperlink{Pet__behaviours_8py_a7bdda0ae2ea8280a4576241a122b0a5d}{Pet\+\_\+behaviours.\+pub} = 0\hypertarget{Pet__behaviours_8py_a7bdda0ae2ea8280a4576241a122b0a5d}{}\label{Pet__behaviours_8py_a7bdda0ae2ea8280a4576241a122b0a5d}
+
+\begin{DoxyCompactList}\small\item\em background color publisher \end{DoxyCompactList}\item 
+int \hyperlink{Pet__behaviours_8py_acb6617ff10cb1900363cbec0b0198c06}{Pet\+\_\+behaviours.\+resets} = 0\hypertarget{Pet__behaviours_8py_acb6617ff10cb1900363cbec0b0198c06}{}\label{Pet__behaviours_8py_acb6617ff10cb1900363cbec0b0198c06}
+
+\begin{DoxyCompactList}\small\item\em background resets \end{DoxyCompactList}\item 
+\hyperlink{Pet__behaviours_8py_a06621618a7dee5915598d47a610431e4}{Pet\+\_\+behaviours.\+teleportabs} = rospy.\+Service\+Proxy(\textquotesingle{}/turtle1/teleport\+\_\+absolute\textquotesingle{}, Teleport\+Absolute)
 \begin{DoxyCompactList}\small\item\em Main function declaration. \end{DoxyCompactList}\item 
-{\bfseries Pet\+\_\+behaviours.\+teleportabs} = rospy.\+Service\+Proxy(\textquotesingle{}/turtle1/teleport\+\_\+absolute\textquotesingle{}, Teleport\+Absolute)\hypertarget{Pet__behaviours_8py_a06621618a7dee5915598d47a610431e4}{}\label{Pet__behaviours_8py_a06621618a7dee5915598d47a610431e4}
-
-\item 
-{\bfseries Pet\+\_\+behaviours.\+resets} = rospy.\+Service\+Proxy(\textquotesingle{}/clear\textquotesingle{},Empty)\hypertarget{Pet__behaviours_8py_acb6617ff10cb1900363cbec0b0198c06}{}\label{Pet__behaviours_8py_acb6617ff10cb1900363cbec0b0198c06}
-
-\item 
 \hyperlink{Pet__behaviours_8py_afeb58c147d02f423a6007b511c89cf51}{Pet\+\_\+behaviours.\+sm\+\_\+s\+\_\+a} = smach.\+State\+Machine(outcomes=\mbox{[}\textquotesingle{}outcome4\textquotesingle{}\mbox{]})\hypertarget{Pet__behaviours_8py_afeb58c147d02f423a6007b511c89cf51}{}\label{Pet__behaviours_8py_afeb58c147d02f423a6007b511c89cf51}
 
 \begin{DoxyCompactList}\small\item\em Create a S\+M\+A\+CH state machine. \end{DoxyCompactList}\item 
@@ -74,16 +74,16 @@ Pet state machine.
 Details\+: This component simulate the behaviour state machine 
 
 \subsection{Variable Documentation}
-\index{Pet\+\_\+behaviours.\+py@{Pet\+\_\+behaviours.\+py}!colorserv@{colorserv}}
-\index{colorserv@{colorserv}!Pet\+\_\+behaviours.\+py@{Pet\+\_\+behaviours.\+py}}
-\subsubsection[{\texorpdfstring{colorserv}{colorserv}}]{\setlength{\rightskip}{0pt plus 5cm}Pet\+\_\+behaviours.\+colorserv = rospy.\+Service\+Proxy(\textquotesingle{}/turtle1/set\+\_\+pen\textquotesingle{}, Set\+Pen)}\hypertarget{Pet__behaviours_8py_file_a88c2949521b61c538c120dd9c08bf4da}{}\label{Pet__behaviours_8py_file_a88c2949521b61c538c120dd9c08bf4da}
+\index{Pet\+\_\+behaviours.\+py@{Pet\+\_\+behaviours.\+py}!teleportabs@{teleportabs}}
+\index{teleportabs@{teleportabs}!Pet\+\_\+behaviours.\+py@{Pet\+\_\+behaviours.\+py}}
+\subsubsection[{\texorpdfstring{teleportabs}{teleportabs}}]{\setlength{\rightskip}{0pt plus 5cm}Pet\+\_\+behaviours.\+teleportabs = rospy.\+Service\+Proxy(\textquotesingle{}/turtle1/teleport\+\_\+absolute\textquotesingle{}, Teleport\+Absolute)}\hypertarget{Pet__behaviours_8py_file_a06621618a7dee5915598d47a610431e4}{}\label{Pet__behaviours_8py_file_a06621618a7dee5915598d47a610431e4}
 
 
 Main function declaration. 
 
 Init the ros node 
 
-Definition at line 210 of file Pet\+\_\+behaviours.\+py.
+Definition at line 219 of file Pet\+\_\+behaviours.\+py.
 
 \index{Pet\+\_\+behaviours.\+py@{Pet\+\_\+behaviours.\+py}!transitions@{transitions}}
 \index{transitions@{transitions}!Pet\+\_\+behaviours.\+py@{Pet\+\_\+behaviours.\+py}}
@@ -96,5 +96,5 @@ Add states to the container.
 
 Add states to the container 
 
-Definition at line 226 of file Pet\+\_\+behaviours.\+py.
+Definition at line 233 of file Pet\+\_\+behaviours.\+py.
 

@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -154,15 +155,17 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Pet__
 float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Pet__behaviours_8py.html#a05cba7438bef49d22f2c83249f468514">Pet_behaviours.timer</a> = 0.5</td></tr>
 <tr class="memdesc:a05cba7438bef49d22f2c83249f468514"><td class="mdescLeft">&#160;</td><td class="mdescRight">delay timer <br /></td></tr>
 <tr class="separator:a05cba7438bef49d22f2c83249f468514"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88c2949521b61c538c120dd9c08bf4da"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Pet__behaviours_8py.html#a88c2949521b61c538c120dd9c08bf4da">Pet_behaviours.colorserv</a> = rospy.ServiceProxy('/turtle1/set_pen', SetPen)</td></tr>
-<tr class="memdesc:a88c2949521b61c538c120dd9c08bf4da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main function declaration.  <a href="Pet__behaviours_8py.html#a88c2949521b61c538c120dd9c08bf4da">More...</a><br /></td></tr>
-<tr class="separator:a88c2949521b61c538c120dd9c08bf4da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06621618a7dee5915598d47a610431e4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a06621618a7dee5915598d47a610431e4"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Pet_behaviours.teleportabs</b> = rospy.ServiceProxy('/turtle1/teleport_absolute', TeleportAbsolute)</td></tr>
-<tr class="separator:a06621618a7dee5915598d47a610431e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bdda0ae2ea8280a4576241a122b0a5d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7bdda0ae2ea8280a4576241a122b0a5d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Pet__behaviours_8py.html#a7bdda0ae2ea8280a4576241a122b0a5d">Pet_behaviours.pub</a> = 0</td></tr>
+<tr class="memdesc:a7bdda0ae2ea8280a4576241a122b0a5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">background color publisher <br /></td></tr>
+<tr class="separator:a7bdda0ae2ea8280a4576241a122b0a5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb6617ff10cb1900363cbec0b0198c06"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb6617ff10cb1900363cbec0b0198c06"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Pet_behaviours.resets</b> = rospy.ServiceProxy('/clear',Empty)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Pet__behaviours_8py.html#acb6617ff10cb1900363cbec0b0198c06">Pet_behaviours.resets</a> = 0</td></tr>
+<tr class="memdesc:acb6617ff10cb1900363cbec0b0198c06"><td class="mdescLeft">&#160;</td><td class="mdescRight">background resets <br /></td></tr>
 <tr class="separator:acb6617ff10cb1900363cbec0b0198c06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06621618a7dee5915598d47a610431e4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Pet__behaviours_8py.html#a06621618a7dee5915598d47a610431e4">Pet_behaviours.teleportabs</a> = rospy.ServiceProxy('/turtle1/teleport_absolute', TeleportAbsolute)</td></tr>
+<tr class="memdesc:a06621618a7dee5915598d47a610431e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main function declaration.  <a href="Pet__behaviours_8py.html#a06621618a7dee5915598d47a610431e4">More...</a><br /></td></tr>
+<tr class="separator:a06621618a7dee5915598d47a610431e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afeb58c147d02f423a6007b511c89cf51"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afeb58c147d02f423a6007b511c89cf51"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Pet__behaviours_8py.html#afeb58c147d02f423a6007b511c89cf51">Pet_behaviours.sm_s_a</a> = smach.StateMachine(outcomes=['outcome4'])</td></tr>
 <tr class="memdesc:afeb58c147d02f423a6007b511c89cf51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a SMACH state machine. <br /></td></tr>
@@ -181,12 +184,12 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Pet
 
 <p>Definition in file <a class="el" href="Pet__behaviours_8py_source.html">Pet_behaviours.py</a>.</p>
 </div><h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="file_a88c2949521b61c538c120dd9c08bf4da"></a>
+<a class="anchor" id="file_a06621618a7dee5915598d47a610431e4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Pet_behaviours.colorserv = rospy.ServiceProxy('/turtle1/set_pen', SetPen)</td>
+          <td class="memname">Pet_behaviours.teleportabs = rospy.ServiceProxy('/turtle1/teleport_absolute', TeleportAbsolute)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -194,7 +197,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Pet
 <p>Main function declaration. </p>
 <p>Init the ros node </p>
 
-<p>Definition at line <a class="el" href="Pet__behaviours_8py_source.html#l00210">210</a> of file <a class="el" href="Pet__behaviours_8py_source.html">Pet_behaviours.py</a>.</p>
+<p>Definition at line <a class="el" href="Pet__behaviours_8py_source.html#l00219">219</a> of file <a class="el" href="Pet__behaviours_8py_source.html">Pet_behaviours.py</a>.</p>
 
 </div>
 </div>
@@ -212,7 +215,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Pet
 <p>Add states to the container.</p>
 <p>Add states to the container </p>
 
-<p>Definition at line <a class="el" href="Pet__behaviours_8py_source.html#l00226">226</a> of file <a class="el" href="Pet__behaviours_8py_source.html">Pet_behaviours.py</a>.</p>
+<p>Definition at line <a class="el" href="Pet__behaviours_8py_source.html#l00233">233</a> of file <a class="el" href="Pet__behaviours_8py_source.html">Pet_behaviours.py</a>.</p>
 
 </div>
 </div>

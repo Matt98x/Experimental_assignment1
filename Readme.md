@@ -7,7 +7,8 @@ interact with a human and moves in a discrete 2D environment.
 The pet has three states representing behaviours, that are simulated as a finite state machine with 3 states:  
 * Play 
 * Sleep 
-* Normal 
+* Normal  
+  
 These states determine the way the robot act inside the grid, whether moving randomly as in normal, going to targets determined by the user or simply sleeping in the home position.  
 The robot will change between states randomly, eccept for play, which is received by the user.  
 
@@ -15,16 +16,28 @@ The robot will change between states randomly, eccept for play, which is receive
 
 The software architecture consists in a pipeline, starting from the command generation and arriving to the pet simulation in turtlesim.  
 Here we show the architecture image:  
-
-
-## Installation and running procedure
-
 <p align="center">
   <img src="https://github.com/Matt98x/Experimental_assignment1/blob/main/Images/Finite_state_machines.PNG?raw=true "Title"">
 </p>
 <p align="center">
   UML scheme. In order to inspect the details, please click on the image
 </p>
+The main components are:
+* Random command generator(Command_giver.py): send a string representing the concatenation of one or more commands of the form: 'play'(to start the play state),'point to x y'(to simulate the pointing gesture to x y),'go to x y'(to simulate the voice command to x y)
+* Pet Interpreter(Pet_logic.py): to interpret the string commands and translate them to a command list
+* Pet behaviours(Pet_behaviours.py): that simulate behaviours as a finite state, in the already mentioned states 
+
+
+## Installation and running procedure
+
+* Download the package from the github repository
+* Set the package in the src folder of the catkin workspace
+* With the shell, get into the folder and run 
+ '''.sh
+	chmod +x launcher.sh
+ '''
+* Write ./launcher.sh
+
 
 ## Working assumptions
 
@@ -48,6 +61,7 @@ Here we show the architecture image:
 * The only command that can be received in Normal is "play".
 * Two predifined positions inside the map are "Owner" and "Home", which cannot be changed during the execution, and can be used instead of coordinates in giving commands.
 
-## System feature and imitations
+## System features and limitations
 
 ## Author and contacts
+Matteo Palmas: matteo.palmas7gmail.com

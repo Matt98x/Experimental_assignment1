@@ -15,6 +15,7 @@ from std_msgs.msg import String
 from std_msgs.msg import Bool
 from std_srvs.srv import Empty
 from robot_pose_ekf.srv import GetStatus
+from turtlesim.msg import Color
 import math
 import sys
 import random
@@ -38,6 +39,11 @@ xt=0
 yt=0 
 ## delay timer
 timer=0.5  
+## background color publisher
+pub=0
+## background resets
+resets=0
+
 
 
 ## go_to_target: function to go to a target specified by the coordinates (xtar,ytar)
@@ -93,6 +99,8 @@ class Sleep(smach.State):
 
     def execute(self, userdata):
 	global x,y
+	## Check if in normal or not
+	rospy.set_param('in_course',0)
 	while True:
 		## while not at home
 		xtar=rospy.get_param('home/x')
@@ -116,7 +124,8 @@ class Normal(smach.State):
 
     def execute(self, userdata):
 	global x,y
-	## check state
+	## Check if in normal or not
+	rospy.set_param('in_course',0)
 	while True:
 		## roam
 		roam()
@@ -191,7 +200,6 @@ class Play(smach.State):
 ## Main function declaration
 
 if __name__ == '__main__':
-
 	## Init the ros node
 	rospy.init_node("state_machine")
 	
@@ -207,8 +215,7 @@ if __name__ == '__main__':
 	rospy.Subscriber("/turtle1/pose",Pose,simcallback)
 	
 	# Setting up the scene
-	colorserv = rospy.ServiceProxy('/turtle1/set_pen', SetPen)
-	colorserv(0,0,255,10,1)
+	
 	teleportabs = rospy.ServiceProxy('/turtle1/teleport_absolute', TeleportAbsolute)
 	teleportabs(5,5,0)
 	resets=rospy.ServiceProxy('/clear',Empty)

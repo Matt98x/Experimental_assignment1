@@ -31,24 +31,23 @@ msg_received=1
 def srvCallback(req):
 	global command
 	temp=command
-	command=""	
+	command=""
 	return temp
 
 
 ## comCallback: The callback that receive the command from the commander and convert them to a compliant format
 def comCallback(msg):
 	global msg_received,command
-	
 	msg_received=rospy.get_param('in_course')
 	state=rospy.get_param('state')
 	# If it is not processing any other message
 	# If a message was received parse it
-	
 	if not msg_received:
 		temp_string="";
 		# separate all commands with "and" delimeter
 		tlist=str(msg.data).split(" and ")
 		# for every command, parse it
+		rospy.loginfo(tlist)
 		for i in range(len(tlist)):
 			# split for every space
 			temp=tlist[i].split(" ")
@@ -75,7 +74,7 @@ def comCallback(msg):
 ## Main function declaration
 if __name__ == '__main__':
 
-	## Init the ros node
+	## Init the ros nodek
 	rospy.init_node("pet_logic")
 	
 	# Declaration of the subscriber
