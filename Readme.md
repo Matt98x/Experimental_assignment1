@@ -5,13 +5,16 @@
 This assignment target is to build an ROS architecture to implement a robot, simulating a pet, that
 interact with a human and moves in a discrete 2D environment.  
 The pet has three states representing behaviours, that are simulated as a finite state machine with 3 states:  
-	- Play  
-	- Sleep  
-	- Normal  
+* Play 
+* Sleep 
+* Normal 
 These states determine the way the robot act inside the grid, whether moving randomly as in normal, going to targets determined by the user or simply sleeping in the home position.  
 The robot will change between states randomly, eccept for play, which is received by the user.  
 
 ## Software Architecture
+
+The software architecture consists in a pipeline, starting from the command generation and arriving to the pet simulation in turtlesim.  
+Here we show the architecture image:  
 
 
 ## Installation and running procedure
