@@ -3,13 +3,13 @@
 ## Introduction
 
 This assignment target is to build an ROS architecture to implement a robot, simulating a pet, that
-interact with a human and moves in a discrete 2D environment.\\
-The pet has three states representing behaviours, that are simulated as a finite state machine with 3 states:\\
-	- Play
-	- Sleep
-	- Normal
-These states determine the way the robot act inside the grid, whether moving randomly as in normal, going to targets determined by the user or simply sleeping in the home position.
-The robot will change between states randomly, eccept for play, which is received by the user.
+interact with a human and moves in a discrete 2D environment.  
+The pet has three states representing behaviours, that are simulated as a finite state machine with 3 states:  
+	- Play  
+	- Sleep  
+	- Normal  
+These states determine the way the robot act inside the grid, whether moving randomly as in normal, going to targets determined by the user or simply sleeping in the home position.  
+The robot will change between states randomly, eccept for play, which is received by the user.  
 
 ## Software Architecture
 

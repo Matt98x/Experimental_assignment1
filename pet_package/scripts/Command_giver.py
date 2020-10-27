@@ -13,9 +13,19 @@ import math
 import sys
 import random
 
+##Variable declaration
+
+
 ## Main function declaration
 if __name__ == '__main__':
 	## Init the ros node
 	rospy.init_node("Command_generator")
 	# Declaration of the subscriber
 	pub=rospy.Publisher("commander",String,queue_size=10)
+	cmd_gen=0 # to decide whether it is randomically generated or user defined
+	#Main loop	
+	while True:
+		if cmd_gen:
+			
+		else:
+			
