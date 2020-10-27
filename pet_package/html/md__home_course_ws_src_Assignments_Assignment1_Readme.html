@@ -85,25 +85,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Sleep</li>
 <li>Normal</li>
 </ul>
-<p>These states determine the way the robot act inside the grid, whether moving randomly as in normal, going to targets determined by the user or simply sleeping in the home position. The robot will change between states randomly, eccept for play, which is received by the user.</p>
+<p>These states determine the way the robot act inside the grid, whether moving randomly as in normal, going to targets determined by the user or simply sleeping in the home position.</p>
+<p>The robot will change between states randomly, eccept for play, which is received by the user.</p>
 <h2>Software Architecture</h2>
 <p>The software architecture consists in a pipeline, starting from the command generation and arriving to the pet simulation in turtlesim. Here we show the architecture image: </p>
-<p>&lt;img src="https://github.com/Matt98x/Experimental_assignment1/blob/main/Images/Finite_state_machines.PNG?raw=true "Title""&gt; </p>
-<p>UML scheme. In order to inspect the details, please click on the image </p>
+<p>&lt;img src="https://github.com/Matt98x/Experimental_assignment1/blob/main/Images/Components_diagram.PNG?raw=true "Title""&gt; </p>
+<p>Component Diagram </p>
 <p>The main components are:</p><ul>
 <li>Random command generator(<a class="el" href="Command__giver_8py.html" title="Component that gives command either randomly generated or given by a user, switching between the two...">Command_giver.py</a>): send a string representing the concatenation of one or more commands of the form: 'play'(to start the play state),'point to x y'(to simulate the pointing gesture to x y),'go to x y'(to simulate the voice command to x y)</li>
 <li>Pet Interpreter(<a class="el" href="Pet__logic_8py.html" title="Pet logic. ">Pet_logic.py</a>): to interpret the string commands and translate them to a command list</li>
 <li>Pet behaviours(<a class="el" href="Pet__behaviours_8py.html" title="Pet state machine. ">Pet_behaviours.py</a>): that simulate behaviours as a finite state, in the already mentioned states</li>
+<li>Turtle simulation: that represents the position of the robot in the map</li>
+<li>User: may or may not be present and provides the same type of messages that the Command_giver provides, adding also symbolical location such as "home" and "owner"</li>
 </ul>
+<p>Starting from the Command_giver, it is a publisher, with String type message, that transmit a series of 1 to 5 commands as the one discussed with a conjunction of an "and".</p>
+<p>Talking about the Pet interpreter, this component subscribes to the command generator topic and provides a service with share the value of the command string composed by integers and devided by the '|' character.</p>
+<p>Now, we can discuss the finite state machine. This, can be described by the following image:</p>
+<p>&lt;img src="https://github.com/Matt98x/Experimental_assignment1/blob/main/Images/Finite_state_machines.PNG?raw=true "Title""&gt; </p>
+<p>Finite state machine diagram </p>
+<p>While the 'Sleep' and 'Normal' state are quite simple in nature (containing just an infinite loop to sleep and to roam respectively), the 'Play' state is quite more complex in nature, having the following structure: </p>
+<p>&lt;img src="https://github.com/Matt98x/Experimental_assignment1/blob/main/Images/Play_behaviour_flowchart.PNG?raw=true "Title""&gt; </p>
+<p>Play behaviour flowchart </p>
+<p>And finally the simulator node, which was not implemented by the outhors, but is the GUI that demonstrate the position of the robot during the pet activity.</p>
 <h2>Installation and running procedure</h2>
 <ul>
 <li>Download the package from the github repository</li>
 <li>Set the package in the src folder of the catkin workspace</li>
-<li>With the shell, get into the folder and run '''.sh chmod +x launcher.sh '''</li>
+<li>With the shell, get into the folder and run '''sh chmod +x launcher.sh '''</li>
 <li>Write ./launcher.sh</li>
+<li>You can look at the blue-background screen to look at the location of the robot while on the shell the state transition and the command from the command menager are displayed</li>
+<li>To write a command: '''sh rostopic pub /commander std_msgs/String "data: ''" ''' where, in place of '', you can put any commands as presented before</li>
 </ul>
 <h2>Working assumptions</h2>
-<ul>
+<p>The working assumptions will be discussed as the following list:</p><ul>
 <li>The robot, simulating a pet, interact with a human and moves in a discrete 2D environment.</li>
 <li>Both the robot targets and its positions belongs exclusively to the map(11 by 11 grid)representing the 2D environment.</li>
 <li>The robot has 3 main states:<ul>
@@ -131,6 +145,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Two predifined positions inside the map are "Owner" and "Home", which cannot be changed during the execution, and can be used instead of coordinates in giving commands.</li>
 </ul>
 <h2>System features and limitations</h2>
+<p>Starting from the limitations:</p><ul>
+<li>The system is not scalable in the number of type of messages</li>
+<li>It is not scalable in the number of symbolic locations</li>
+<li>Does not provide a complete graphical interface, as the grid is not visible</li>
+<li>The simulation is not modifiable as it was out-sourced</li>
+</ul>
+<p>Going on to the feature:</p><ul>
+<li>Understand both integer and symbolic location, provided they are of the predefined nature</li>
+<li>Can show the location of the robot in the map and provide via shell the state transition and the command generated by the command generator</li>
+</ul>
+<h2>Possible technical improvements</h2>
+<p>There are many possible technical improvements to this architecture:</p><ul>
+<li>Modify the simulation component to make it more scalable</li>
+<li>Modify the interpreter to broaden the symbolic targets( to do it, the method is to setup a search in the parameters server to extract the coordinates related to the string)</li>
+<li>Add a more comprehensive propositional logic, adding an 'or' conjunction to make the system more intelligent</li>
+<li>Find a way to add symbolic location to the parameters server</li>
+</ul>
 <h2>Author and contacts</h2>
 <p>Matteo Palmas: matteo.palmas7gmail.com </p>
 </div></div><!-- contents -->
