@@ -19,30 +19,31 @@ import math
 import sys
 import random
 
-## Variables declaration
-x=0 # global x position
-y=0 #global y position
+# Variables declaration
+
+## global x position
+x=0 
+## global y position
+y=0 
 
 
-## Declaration of the callback function
-# @fn simcallback
-# @param data: pose response from turtlesim
+## simcallback: pose response from turtlesim
 def simcallback(data):
     global x,y
     x=data.x
     y=data.y
 
-## @fn main
-# Main function declaration
+## Main function declaration
 if __name__ == '__main__':
 
-	# Init the ros node
+	## Init the ros node
 	rospy.init_node("state_out_sim")
 	# Declaration of the subscriber
 	rospy.Subscriber("/turtle1/pose",Pose,simcallback)
 	# Declaration of the service
 	rospy.wait_for_service('/turtle1/teleport_absolute')
 	rospy.wait_for_service('/clear')
+	## teleportation function
 	teleportabs = rospy.ServiceProxy('/turtle1/teleport_absolute', TeleportAbsolute)
 	resets=rospy.ServiceProxy('/clear',Empty)
 	rate = rospy.Rate(5) # 10hz

@@ -21,27 +21,30 @@ import sys
 import random
 import time
 
-##! Variable declaration
-command=[] #
-msg_received=1 #if a message is received
+## Variable declaration
+## Command string
+command=[] 
+## variable if a message is received
+msg_received=1 
 
-##! @fn srvCallback
+## srvCallback: service function to send the command to Pet_behaviours
 def srvCallback(req):
-	# Service to send the command to Pet_behaviours
 	global command
 	temp=command
 	command=""	
 	return temp
 
-##! @fn comCallback
-# @brief The callback that receive the command and convert them to a compliant format
+
+## comCallback: The callback that receive the command from the commander and convert them to a compliant format
 def comCallback(msg):
 	global msg_received,command
+	
 	msg_received=rospy.get_param('in_course')
 	state=rospy.get_param('state')
 	# If it is not processing any other message
 	# If a message was received parse it
-	if not msg_received and state==2:
+	
+	if not msg_received:
 		temp_string="";
 		# separate all commands with "and" delimeter
 		tlist=str(msg.data).split(" and ")
@@ -49,26 +52,30 @@ def comCallback(msg):
 		for i in range(len(tlist)):
 			# split for every space
 			temp=tlist[i].split(" ")
-			for j in range(len(temp)-2):
-				if temp[j+2]=="home" or temp[j+2]=="owner":
-					rospy.loginfo(str(temp[j+2]))
-					temp_string+=str(rospy.get_param(str(temp[j+2])+str("/")+str("x")))
-					temp_string+=" "
-					temp_string+=str(rospy.get_param(str(temp[j+2])+str("/")+str("y")))
-				else:
-					temp_string+=str(temp[j+2])
-				if j<len(temp)-3:
-					temp_string+=" "
-			if i<len(tlist)-1:
-					temp_string+="|"
+			if temp[0]=='play' and state==1 and len(temp)<3:
+					rospy.set_param('state',2)
+			else:
+				for j in range(len(temp)-2):
+					state=rospy.get_param('state')
+					if state==2 and not temp[0]=='play':
+						if temp[j+2]=="home" or temp[j+2]=="owner":
+							temp_string+=str(rospy.get_param(str(temp[j+2])+str("/")+str("x")))
+							temp_string+=" "
+							temp_string+=str(rospy.get_param(str(temp[j+2])+str("/")+str("y")))
+						else:
+							temp_string+=str(temp[j+2])
+						if j<len(temp)-3:
+							temp_string+=" "
+				if i<len(tlist)-1:
+						temp_string+="|"
 			command=temp_string
 
 
-##! @fn main
-# Main function declaration
+
+## Main function declaration
 if __name__ == '__main__':
 
-	# Init the ros node
+	## Init the ros node
 	rospy.init_node("pet_logic")
 	
 	# Declaration of the subscriber
@@ -76,7 +83,23 @@ if __name__ == '__main__':
 	# Declaration of the service
 	s = rospy.Service('commandsrv', GetStatus, srvCallback)
 	rate = rospy.Rate(5) # 10hz
+	# Loop to change state randomly
 	while not rospy.is_shutdown():
-		
-		rate.sleep()
-
+		value=random.randrange(15,45,5) #timer in which to change state (from 15 s to 1 and 1/2 min)
+		time.sleep(value)
+		#get the current state
+		state=rospy.get_param('state')
+		# choose a random value to decide to change state
+		value=random.randrange(1,10,1)
+		if state==1: # if it is in normale choose to change to sleep
+			if value<3:
+				rospy.set_param('state',3)
+		if state==2: # if in play choose between normal and sleep
+			value=random.randrange(1,10,1)
+			if value<3:
+				rospy.set_param('state',3)
+			if value>3 and value<7:
+				rospy.set_param('state',1)
+		if state==3: # if in sleep choose to change in normal
+			if value<3:
+				rospy.set_param('state',1)
