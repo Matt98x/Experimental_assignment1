@@ -1,6 +1,6 @@
 # Experimental robotic assignment 1
 
-[Documentation] ["https://github.com/Matt98x/Experimental_assignment1/blob/main/pet_package/html/index.html"] 
+<a href="http://htmlpreview.github.io/?https://github.com/Matt98x/Experimental_assignment1/blob/main/pet_package/html/index.html" 
 
 ## Introduction
 
