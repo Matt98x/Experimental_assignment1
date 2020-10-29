@@ -1,5 +1,7 @@
 # Experimental robotic assignment 1
 
+<a href="https://github.com/Matt98x/Experimental_assignment1/blob/main/pet_package/html/index.html" title="Documentation">Documentation</a>
+
 ## Introduction
 
 This assignment target is to build an ROS architecture to implement a robot, simulating a pet, that
