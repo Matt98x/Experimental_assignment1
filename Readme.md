@@ -25,7 +25,7 @@ Here we show the architecture image:
 <p align="center">
   Component Diagram
 </p>
-The main components are:
+The main components are:  
 * Random command generator(Command_giver.py)- send a string representing the concatenation of one or more commands of the form: 'play'(to start the play state),'point to x y'(to simulate the pointing gesture to x y),'go to x y'(to simulate the voice command to x y)  
 * Pet Interpreter(Pet_logic.py)- to interpret the string commands and translate them to a command list  
 * Pet behaviours(Pet_behaviours.py)- that simulate behaviours as a finite state, in the already mentioned states  
