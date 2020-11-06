@@ -26,11 +26,12 @@ Here we show the architecture image:
   Component Diagram
 </p>
 The main components are:  
-* Random command generator(Command_giver.py)- send a string representing the concatenation of one or more commands of the form: 'play'(to start the play state),'point to x y'(to simulate the pointing gesture to x y),'go to x y'(to simulate the voice command to x y)  
-* Pet Interpreter(Pet_logic.py)- to interpret the string commands and translate them to a command list  
-* Pet behaviours(Pet_behaviours.py)- that simulate behaviours as a finite state, in the already mentioned states  
-* Turtle simulation- that represents the position of the robot in the map  
-* User- may or may not be present and provides the same type of messages that the Command_giver provides, adding also symbolical location such as "home" and "owner"  
+
+* Random command generator(Command_giver.py)- send a string representing the concatenation of one or more commands of the form: 'play'(to start the play state),'point to x y'(to simulate the pointing gesture to x y),'go to x y'(to simulate the voice command to x y)
+* Pet Interpreter(Pet_logic.py)- to interpret the string commands and translate them to a command list
+* Pet behaviours(Pet_behaviours.py)- that simulate behaviours as a finite state, in the already mentioned states
+* Turtle simulation- that represents the position of the robot in the map
+* User- may or may not be present and provides the same type of messages that the Command_giver provides, adding also symbolical location such as "home" and "owner"
 
 Starting from the Command_giver, it is a publisher, with String type message, that transmit a series of 1 to 5 commands as the one discussed with a conjunction of an "and".
 
