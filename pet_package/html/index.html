@@ -92,12 +92,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="image">
 <img src="Components_diagram.PNG" alt="Components_diagram.PNG"/>
 </div>
- <center>Component Diagram</center><p>The main components are:</p><ul>
-<li>Random command generator(<a class="el" href="Command__giver_8py.html" title="Component that gives command either randomly generated or given by a user, switching between the two...">Command_giver.py</a>): send a string representing the concatenation of one or more commands of the form: 'play'(to start the play state),'point to x y'(to simulate the pointing gesture to x y),'go to x y'(to simulate the voice command to x y)</li>
-<li>Pet Interpreter(<a class="el" href="Pet__logic_8py.html" title="Pet logic. ">Pet_logic.py</a>): to interpret the string commands and translate them to a command list</li>
-<li>Pet behaviours(<a class="el" href="Pet__behaviours_8py.html" title="Pet state machine. ">Pet_behaviours.py</a>): that simulate behaviours as a finite state, in the already mentioned states</li>
-<li>Turtle simulation: that represents the position of the robot in the map</li>
-<li>User: may or may not be present and provides the same type of messages that the Command_giver provides, adding also symbolical location such as "home" and "owner"</li>
+ <center>Component Diagram</center><p>The main components are:</p>
+<ul>
+<li>Random command generator(<a class="el" href="Command__giver_8py.html" title="Component that gives command either randomly generated or given by a user, switching between the two...">Command_giver.py</a>)- send a string representing the concatenation of one or more commands of the form: 'play'(to start the play state),'point to x y'(to simulate the pointing gesture to x y),'go to x y'(to simulate the voice command to x y) Pet Interpreter(<a class="el" href="Pet__logic_8py.html" title="Pet logic. ">Pet_logic.py</a>)- to interpret the string commands and translate them to a command list</li>
+<li>Pet behaviours(<a class="el" href="Pet__behaviours_8py.html" title="Pet state machine. ">Pet_behaviours.py</a>)- that simulate behaviours as a finite state, in the already mentioned states</li>
+<li>Turtle simulation- that represents the position of the robot in the map</li>
+<li>User- may or may not be present and provides the same type of messages that the Command_giver provides, adding also symbolical location such as "home" and "owner"</li>
 </ul>
 <p>Starting from the Command_giver, it is a publisher, with String type message, that transmit a series of 1 to 5 commands as the one discussed with a conjunction of an "and".</p>
 <p>Talking about the Pet interpreter, this component subscribes to the command generator topic and provides a service with share the value of the command string composed by integers and devided by the '|' character.</p>

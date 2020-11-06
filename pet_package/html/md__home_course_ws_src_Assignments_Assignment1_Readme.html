@@ -79,7 +79,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Experimental robotic assignment 1 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2>Introduction</h2>
+<div class="textblock"><p><a href="http://htmlpreview.github.io/?https://github.com/Matt98x/Experimental_assignment1/blob/main/pet_package/html/index.html" title="Documentation">Documentation</a></p>
+<h2>Introduction</h2>
 <p>This assignment target is to build an ROS architecture to implement a robot, simulating a pet, that interact with a human and moves in a discrete 2D environment. The pet has three states representing behaviours, that are simulated as a finite state machine with 3 states:</p><ul>
 <li>Play</li>
 <li>Sleep</li>
@@ -91,12 +92,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>The software architecture consists in a pipeline, starting from the command generation and arriving to the pet simulation in turtlesim. Here we show the architecture image: </p>
 <p>&lt;img src="https://github.com/Matt98x/Experimental_assignment1/blob/main/Images/Components_diagram.PNG?raw=true "Title""&gt; </p>
 <p>Component Diagram </p>
-<p>The main components are:</p><ul>
-<li>Random command generator(<a class="el" href="Command__giver_8py.html" title="Component that gives command either randomly generated or given by a user, switching between the two...">Command_giver.py</a>): send a string representing the concatenation of one or more commands of the form: 'play'(to start the play state),'point to x y'(to simulate the pointing gesture to x y),'go to x y'(to simulate the voice command to x y)</li>
-<li>Pet Interpreter(<a class="el" href="Pet__logic_8py.html" title="Pet logic. ">Pet_logic.py</a>): to interpret the string commands and translate them to a command list</li>
-<li>Pet behaviours(<a class="el" href="Pet__behaviours_8py.html" title="Pet state machine. ">Pet_behaviours.py</a>): that simulate behaviours as a finite state, in the already mentioned states</li>
-<li>Turtle simulation: that represents the position of the robot in the map</li>
-<li>User: may or may not be present and provides the same type of messages that the Command_giver provides, adding also symbolical location such as "home" and "owner"</li>
+<p>The main components are:</p>
+<ul>
+<li>Random command generator(<a class="el" href="Command__giver_8py.html" title="Component that gives command either randomly generated or given by a user, switching between the two...">Command_giver.py</a>)- send a string representing the concatenation of one or more commands of the form: 'play'(to start the play state),'point to x y'(to simulate the pointing gesture to x y),'go to x y'(to simulate the voice command to x y)</li>
+<li>Pet Interpreter(<a class="el" href="Pet__logic_8py.html" title="Pet logic. ">Pet_logic.py</a>)- to interpret the string commands and translate them to a command list</li>
+<li>Pet behaviours(<a class="el" href="Pet__behaviours_8py.html" title="Pet state machine. ">Pet_behaviours.py</a>)- that simulate behaviours as a finite state, in the already mentioned states</li>
+<li>Turtle simulation- that represents the position of the robot in the map</li>
+<li>User- may or may not be present and provides the same type of messages that the Command_giver provides, adding also symbolical location such as "home" and "owner"</li>
 </ul>
 <p>Starting from the Command_giver, it is a publisher, with String type message, that transmit a series of 1 to 5 commands as the one discussed with a conjunction of an "and".</p>
 <p>Talking about the Pet interpreter, this component subscribes to the command generator topic and provides a service with share the value of the command string composed by integers and devided by the '|' character.</p>

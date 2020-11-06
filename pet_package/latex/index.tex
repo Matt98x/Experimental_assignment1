@@ -18,12 +18,13 @@ The software architecture consists in a pipeline, starting from the command gene
  \begin{center}Component Diagram\end{center} 
 
 The main components are\+:
+
+
 \begin{DoxyItemize}
-\item Random command generator(\hyperlink{Command__giver_8py}{Command\+\_\+giver.\+py})\+: send a string representing the concatenation of one or more commands of the form\+: \textquotesingle{}play\textquotesingle{}(to start the play state),\textquotesingle{}point to x y\textquotesingle{}(to simulate the pointing gesture to x y),\textquotesingle{}go to x y\textquotesingle{}(to simulate the voice command to x y)
-\item Pet Interpreter(\hyperlink{Pet__logic_8py}{Pet\+\_\+logic.\+py})\+: to interpret the string commands and translate them to a command list
-\item Pet behaviours(\hyperlink{Pet__behaviours_8py}{Pet\+\_\+behaviours.\+py})\+: that simulate behaviours as a finite state, in the already mentioned states
-\item Turtle simulation\+: that represents the position of the robot in the map
-\item User\+: may or may not be present and provides the same type of messages that the Command\+\_\+giver provides, adding also symbolical location such as \char`\"{}home\char`\"{} and \char`\"{}owner\char`\"{}
+\item Random command generator(\hyperlink{Command__giver_8py}{Command\+\_\+giver.\+py})-\/ send a string representing the concatenation of one or more commands of the form\+: \textquotesingle{}play\textquotesingle{}(to start the play state),\textquotesingle{}point to x y\textquotesingle{}(to simulate the pointing gesture to x y),\textquotesingle{}go to x y\textquotesingle{}(to simulate the voice command to x y) Pet Interpreter(\hyperlink{Pet__logic_8py}{Pet\+\_\+logic.\+py})-\/ to interpret the string commands and translate them to a command list
+\item Pet behaviours(\hyperlink{Pet__behaviours_8py}{Pet\+\_\+behaviours.\+py})-\/ that simulate behaviours as a finite state, in the already mentioned states
+\item Turtle simulation-\/ that represents the position of the robot in the map
+\item User-\/ may or may not be present and provides the same type of messages that the Command\+\_\+giver provides, adding also symbolical location such as \char`\"{}home\char`\"{} and \char`\"{}owner\char`\"{}
 \end{DoxyItemize}
 
 Starting from the Command\+\_\+giver, it is a publisher, with String type message, that transmit a series of 1 to 5 commands as the one discussed with a conjunction of an \char`\"{}and\char`\"{}.
