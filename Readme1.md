@@ -16,7 +16,7 @@ The robot will change between states randomly, eccept for play, which is receive
 ## Software Architecture
 
 The software architecture consists in a pipeline, starting from the command generation and arriving to the pet simulation in turtlesim.  
-Here we show the architecture image:  
+Here we show the architecture image:
 
 \image html Components_diagram.PNG
 <center>Component Diagram</center>
@@ -24,9 +24,13 @@ Here we show the architecture image:
 The main components are:
 
 * Random command generator(Command_giver.py): send a string representing the concatenation of one or more commands of the form: 'play'(to start the play state),'point to x y'(to simulate the pointing gesture to x y),'go to x y'(to simulate the voice command to x y)
+
 * Pet Interpreter(Pet_logic.py): to interpret the string commands and translate them to a command list
+
 * Pet behaviours(Pet_behaviours.py): that simulate behaviours as a finite state, in the already mentioned states 
+
 * Turtle simulation: that represents the position of the robot in the map
+
 * User: may or may not be present and provides the same type of messages that the Command_giver provides, adding also symbolical location such as "home" and "owner"
 
 Starting from the Command_giver, it is a publisher, with String type message, that transmit a series of 1 to 5 commands as the one discussed with a conjunction of an "and".
